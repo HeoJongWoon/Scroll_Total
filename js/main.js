@@ -19,9 +19,10 @@ btns.forEach((btn, idx) => {
 //브라우저 스크롤시 현재스크롤 위치값이 특정 순번의 섹션영역에 도달하면 해당 순번의 버튼 활성화
 window.addEventListener('scroll', () => {
 	const scroll = window.scrollY;
+	const baseLine = -window.innerHeight / 3; //현재 보이는 섹션의 영역이 전체 영역의 3분의 2이상 보일떄 버튼 활성화
 
 	posArr.forEach((_, idx) => {
-		if (scroll >= posArr[idx]) {
+		if (scroll >= posArr[idx] + baseLine) {
 			btns.forEach((btn) => btn.classList.remove('on'));
 			btns[idx].classList.add('on');
 		}
